@@ -48,42 +48,6 @@ transform = transforms.Compose([
         transforms.Normalize(mean=[0.485, 0.456, 0.406], std=[0.229, 0.224, 0.225]),
     ])
 
-resnet50_model  = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V2).to('cpu')
-num_ftrs_2 = resnet50_model.fc.in_features
-resnet50_model.fc = nn.Sequential(
-    nn.Dropout(0.5),
-    nn.Linear(num_ftrs_2, 512),
-    nn.Sigmoid(),
-    nn.Dropout(0.5),
-    nn.Linear(512, 7)
-).to('cpu')
-resnet50_model = resnet50_model.to('cpu')
-resnet50_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinResnet50.pt'), map_location=torch.device('cpu')))
-
-efficient_model  = models.efficientnet_v2_s(weights=models.EfficientNet_V2_S_Weights.IMAGENET1K_V1).to('cpu')
-num_ftrs_1 = efficient_model.classifier[1].in_features
-efficient_model.classifier[1] = nn.Sequential(
-    nn.Dropout(0.5),
-    nn.Linear(num_ftrs_1, 512),
-    nn.Sigmoid(),
-    nn.Dropout(0.5),
-    nn.Linear(512, 7)
-).to('cpu')
-efficient_model = efficient_model.to('cpu')
-efficient_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinEfficient.pt'), map_location=torch.device('cpu')))
-
-vgg19_model  = models.vgg19(weights=models.VGG19_Weights.IMAGENET1K_V1).to('cpu')
-num_ftrs_3 = vgg19_model.classifier[6].in_features
-vgg19_model.classifier[6] = nn.Sequential(
-    nn.Dropout(0.5),
-    nn.Linear(num_ftrs_3, 512),
-    nn.Sigmoid(),
-    nn.Dropout(0.5),
-    nn.Linear(512, 7)
-).to('cpu')
-vgg19_model = vgg19_model.to('cpu')
-vgg19_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinVGG19.pt'), map_location=torch.device('cpu')))
-
 def generate_chart(prediction_probs):
     plt.figure(figsize=[50,50])
     plt.pie(prediction_probs)
@@ -110,11 +74,44 @@ def upload_file():
         model_value = request.form.get('model')
         image = Image.open(path)
         image_tensor = transform(image).unsqueeze(0).to('cpu')
-        if model_value == "1":  
+        if model_value == "1":
+            resnet50_model  = models.resnet50(weights=models.ResNet50_Weights.IMAGENET1K_V2).to('cpu')
+            num_ftrs_2 = resnet50_model.fc.in_features
+            resnet50_model.fc = nn.Sequential(
+                nn.Dropout(0.5),
+                nn.Linear(num_ftrs_2, 512),
+                nn.Sigmoid(),
+                nn.Dropout(0.5),
+                nn.Linear(512, 7)
+            ).to('cpu')
+            resnet50_model = resnet50_model.to('cpu')
+            resnet50_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinResnet50.pt'), map_location=torch.device('cpu')))  
             model = resnet50_model
         elif model_value == "2":
+            vgg19_model  = models.vgg19(weights=models.VGG19_Weights.IMAGENET1K_V1).to('cpu')
+            num_ftrs_3 = vgg19_model.classifier[6].in_features
+            vgg19_model.classifier[6] = nn.Sequential(
+                nn.Dropout(0.5),
+                nn.Linear(num_ftrs_3, 512),
+                nn.Sigmoid(),
+                nn.Dropout(0.5),
+                nn.Linear(512, 7)
+            ).to('cpu')
+            vgg19_model = vgg19_model.to('cpu')
+            vgg19_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinVGG19.pt'), map_location=torch.device('cpu')))
             model = vgg19_model 
         elif model_value == "3":
+            efficient_model  = models.efficientnet_v2_s(weights=models.EfficientNet_V2_S_Weights.IMAGENET1K_V1).to('cpu')
+            num_ftrs_1 = efficient_model.classifier[1].in_features
+            efficient_model.classifier[1] = nn.Sequential(
+                nn.Dropout(0.5),
+                nn.Linear(num_ftrs_1, 512),
+                nn.Sigmoid(),
+                nn.Dropout(0.5),
+                nn.Linear(512, 7)
+            ).to('cpu')
+            efficient_model = efficient_model.to('cpu')
+            efficient_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinEfficient.pt'), map_location=torch.device('cpu')))
             model = efficient_model
         else:
             print("model: ", model_value)
