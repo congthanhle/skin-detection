@@ -58,7 +58,7 @@ resnet50_model.fc = nn.Sequential(
     nn.Linear(512, 7)
 ).to('cpu')
 resnet50_model = resnet50_model.to('cpu')
-resnet50_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinResNet50.pt'), map_location=torch.device('cpu')))  
+resnet50_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinmodel50.pt'), map_location=torch.device('cpu')))  
 
 vgg19_model  = models.vgg19(weights=models.VGG19_Weights.IMAGENET1K_V1).to('cpu')
 num_ftrs_3 = vgg19_model.classifier[6].in_features
@@ -70,7 +70,7 @@ vgg19_model.classifier[6] = nn.Sequential(
     nn.Linear(512, 7)
 ).to('cpu')
 vgg19_model = vgg19_model.to('cpu')
-vgg19_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinVGG19.pt'), map_location=torch.device('cpu')))
+vgg19_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/VGG_19_Augmentation.pt'), map_location=torch.device('cpu')))
 
 efficient_model  = models.efficientnet_v2_s(weights=models.EfficientNet_V2_S_Weights.IMAGENET1K_V1).to('cpu')
 num_ftrs_1 = efficient_model.classifier[1].in_features
@@ -82,7 +82,7 @@ efficient_model.classifier[1] = nn.Sequential(
     nn.Linear(512, 7)
 ).to('cpu')
 efficient_model = efficient_model.to('cpu')
-efficient_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinEfficient.pt'), map_location=torch.device('cpu')))
+efficient_model.load_state_dict(torch.load(os.path.join(app.root_path, 'models/skinmodelEff.pt'), map_location=torch.device('cpu')))
 
 def generate_chart(prediction_probs, model_name):
     plt.figure(figsize=[20,20])

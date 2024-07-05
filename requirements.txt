@@ -8,4 +8,4 @@ torch
 torchvision
 tensorboard==2.13.0
 celery
-
+azure-storage-blob
