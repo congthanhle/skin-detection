@@ -67,14 +67,11 @@
             it now by uploading a skin scan image.
           </p>
         </header>
-
         <div class="row py-2">
-          <div class="col-lg-6 mx-auto d-flex flex-column align-items-center">
+          <div class="col-lg-9 mx-auto d-flex flex-column align-items-center">
             <div
               id="image-preview"
               class="d-flex align-items-center justify-content-center image-area mt-4 text-center"
-              ondragover="event.preventDefault()"
-              ondrop="handleDrop(event)"
             >
               <label
                 for="upload"
@@ -103,18 +100,33 @@
                 style="display: none"
                 accept="image/*"
               />
-              <select
-                class="form-select mb-4 rounded-pill text-center"
-                aria-label="Default select example"
-                style="height: 40px; width: 224px"
-                id="model"
-                name="model"
-              >
-                <option value="0" selected>Ensemble</option>
-                <option value="1">ResNet 50</option>
-                <option value="2">VGG 19</option>
-                <option value="3">EfficientNet</option>
-              </select>
+              <div class="d-flex align-items-center justify-content-center flex-wrap text-light">
+                <div class="form-check mb-4 mx-3">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="model" value="ResNet50"> ResNet50
+                  </label>
+                </div>
+                <div class="form-check mb-4 mx-3">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="model" value="VGG19"> VGG19
+                  </label>
+                </div>     
+                <div class="form-check mb-4 mx-3">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="model" value="EfficientNet"> EfficientNet
+                  </label>
+                </div>
+                <div class="form-check mb-4 mx-3">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="model" value="Swin Tranformer"> Swin Tranformer
+                  </label>
+                </div>    
+                <div class="form-check mb-4 mx-3">
+                  <label class="form-check-label">
+                    <input type="checkbox" class="form-check-input" name="model" value="CFS"> CFS
+                  </label>
+                </div>
+              </div>
               <input
                 type="submit"
                 class="btn m-0 rounded-pill px-4 mx-auto w-20 custom-button text-uppercase font-weight-bold text-center"

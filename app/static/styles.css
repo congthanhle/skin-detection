@@ -1,16 +1,84 @@
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed, 
-figure, figcaption, footer, header, hgroup, 
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
 	margin: 0;
 	padding: 0;
 	border: 0;
@@ -18,39 +86,59 @@ time, mark, audio, video {
 	font: inherit;
 	vertical-align: baseline;
 }
+
 /* HTML5 display-role reset for older browsers */
-article, aside, details, figcaption, figure, 
-footer, header, hgroup, menu, nav, section {
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
 	display: block;
 }
+
 body {
 	min-height: 100vh;
 	background-color: #757f9a;
 	background-image: linear-gradient(180deg, #ee6298 20%, #1FC9FD 80%);
-	
+
 }
-ol, ul {
+
+ol,
+ul {
 	list-style: none;
 }
-blockquote, q {
+
+blockquote,
+q {
 	quotes: none;
 }
-blockquote:before, blockquote:after,
-q:before, q:after {
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
 	content: '';
 	content: none;
 }
+
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-#home{
+
+#home {
 	min-height: 100vh;
 	background-color: #757f9a;
 	background-image: linear-gradient(180deg, #ee6298 20%, #1FC9FD 80%);
 }
 
-.school-name{
+.school-name {
 	text-align: center;
 	font-size: 15px;
 	text-transform: uppercase;
@@ -59,8 +147,8 @@ table {
 }
 
 #imageResult {
-  width: 300px;
-  max-width: 300px;
+	width: 300px;
+	max-width: 300px;
 	max-height: 300px;
 	margin-block: 30px;
 }
@@ -91,18 +179,20 @@ table {
 }
 
 .custom-button {
-	width: 150px;  
+	width: 150px;
 	font-size: 14px !important;
 }
 
 .section {
 	padding: 20px;
 }
+
 .section-1 {
 	height: calc(99vh - 71.33px);
 	background-color: #ffffff;
 	border-left: #1FC9FD 1px solid;
 }
+
 .section-2 {
 	background-color: #ffffff;
 	min-height: 28vh;
@@ -110,12 +200,16 @@ table {
 	margin-bottom: 2vh;
 	padding: 10px;
 }
+
 .section-3 {
 	background-color: #ffffff;
 	margin-bottom: 0;
-	padding: 0px;
+	padding: 20px;
 	max-height: calc(69vh - 71.33px);
 	min-height: calc(69vh - 71.33px);
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
 }
 
 .disinfo {
@@ -123,10 +217,10 @@ table {
 	height: 100%;
 }
 
-.image-predict{
-  width: 224px;
-  max-width: 224px;
-	max-height: 224px;
+.image-predict {
+	width: 250px;
+	max-width: 250px;
+	max-height: 250px;
 }
 
 .footer {
@@ -148,8 +242,28 @@ table {
 	vertical-align: top;
 }
 
-@media (max-width: 1401px) {
+.form-check {
+	display: inline-block;
+	margin-right: 20px;
+}
+
+.form-check-input {
+	color: #fff;
+	transform: scale(1.5);
+}
+
+input[type="checkbox"] {
+	accent-color: #ee6298 !important;
+}
+
+@media (max-width: 1420px) {
 	#home{
-		min-height: calc(100vh + 30vw);
+		min-height: calc(100vh + 50vh);
+	}
+}
+
+@media (max-width: 500px) {
+	#home{
+		min-height: calc(100vh + 90vh);
 	}
 }
