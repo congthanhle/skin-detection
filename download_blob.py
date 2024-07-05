@@ -1,8 +1,8 @@
 import os
 from azure.storage.blob import BlobServiceClient
 
-AZURE_STORAGE_CONNECTION_STRING = "your_connection_string"
-CONTAINER_NAME = "your_container_name"
+AZURE_STORAGE_CONNECTION_STRING = "DefaultEndpointsProtocol=https;AccountName=skinmodel;AccountKey=Zn40GS8OEr3HMWE+QoBQw4zLxaIWj/sEPyfhNht/SchyBnbI5h0PLJnZbgxjeTXNlVMlQEjdEH00+AStmi3+1Q==;EndpointSuffix=core.windows.net"
+CONTAINER_NAME = "model-weight"
 BLOB_NAMES = ["skinmodel50.pt", "skinmodelEff.pt", "VGG_19_Augmentation.pt"]
 LOCAL_PATH = "models"
 
